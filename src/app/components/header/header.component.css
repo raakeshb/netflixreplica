@@ -1,0 +1,161 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 4%;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0));
+}
+
+.header.scrolled {
+  background-color: #141414;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.netflix-logo {
+  width: 92px;
+  height: 25px;
+  fill: #e50914;
+  transition: fill 0.3s ease;
+}
+
+.netflix-logo:hover {
+  fill: #ff0a16;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #fff;
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #e50914;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-container.active {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #fff;
+  padding: 5px 10px;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  width: 250px;
+  margin-left: 10px;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.icon-btn:hover {
+  color: #b3b3b3;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.profile img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.profile:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1024px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    height: 56px;
+  }
+  
+  .netflix-logo {
+    width: 80px;
+    height: 22px;
+  }
+  
+  .search-input {
+    width: 150px;
+  }
+}
