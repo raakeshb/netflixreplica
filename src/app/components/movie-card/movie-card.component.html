@@ -1,0 +1,35 @@
+<div class="movie-card" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" (click)="viewDetails()">
+  <img [src]="movie.imageUrl" [alt]="movie.title" class="movie-poster">
+  <div class="movie-overlay" *ngIf="isHovered">
+    <div class="overlay-content">
+      <div class="overlay-buttons">
+        <button class="overlay-btn play-btn" (click)="playMovie(); $event.stopPropagation()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5V19L19 12L8 5Z"/>
+          </svg>
+        </button>
+        <button class="overlay-btn icon-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5V19M5 12H19"/>
+          </svg>
+        </button>
+        <button class="overlay-btn icon-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="overlay-info">
+        <h3 class="movie-title">{{ movie.title }}</h3>
+        <div class="movie-meta">
+          <span class="match">{{ movie.rating * 10 | number:'1.0-0' }}% Match</span>
+          <span class="year">{{ movie.year }}</span>
+          <span class="quality">HD</span>
+        </div>
+        <div class="movie-genres">
+          <span class="genre">{{ movie.genre }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
