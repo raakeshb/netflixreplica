@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="movie-detail" *ngIf="movie">
+  <div class="detail-banner" [style.background-image]="'url(' + movie.imageUrl + ')'">
+    <div class="banner-overlay"></div>
+    <button class="back-btn" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 11H7.83L12.71 6.12C13.1 5.73 13.1 5.09 12.71 4.7C12.32 4.31 11.69 4.31 11.3 4.7L4.71 11.29C4.32 11.68 4.32 12.31 4.71 12.7L11.3 19.29C11.69 19.68 12.32 19.68 12.71 19.29C13.1 18.9 13.1 18.27 12.71 17.88L7.83 13H19C19.55 13 20 12.55 20 12C20 11.45 19.55 11 19 11Z"/>
+      </svg>
+    </button>
+    <div class="detail-content">
+      <h1 class="detail-title">{{ movie.title }}</h1>
+      <div class="detail-buttons">
+        <button class="btn btn-play" (click)="playMovie()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5V19L19 12L8 5Z"/>
+          </svg>
+          Play
+        </button>
+        <button class="btn-icon" (click)="addToList()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5V19M5 12H19"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="detail-info">
+    <div class="info-main">
+      <div class="info-row">
+        <span class="match">{{ movie.rating * 10 | number:'1.0-0' }}% Match</span>
+        <span class="year">{{ movie.year }}</span>
+        <span class="duration">{{ movie.duration }}</span>
+        <span class="quality">HD</span>
+      </div>
+      <p class="description">{{ movie.description }}</p>
+    </div>
+    
+    <div class="info-side">
+      <div class="info-item">
+        <span class="label">Genre:</span>
+        <span class="value">{{ movie.genre }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Rating:</span>
+        <span class="value">{{ movie.rating }}/5</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="similar-section" *ngIf="similarMovies.length > 0">
+    <h2 class="section-title">More Like This</h2>
+    <div class="similar-grid">
+      <app-movie-card *ngFor="let similarMovie of similarMovies" [movie]="similarMovie"></app-movie-card>
+    </div>
+  </div>
+</div>
+
+<div class="no-movie" *ngIf="!movie">
+  <h2>Movie not found</h2>
+  <button class="btn btn-play" (click)="goBack()">Go Back Home</button>
+</div>
