@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="search-page">
+  <div class="search-container">
+    <h1 class="search-title" *ngIf="searchQuery">Search results for "{{ searchQuery }}"</h1>
+    <h1 class="search-title" *ngIf="!searchQuery">Search for movies and TV shows</h1>
+    
+    <div class="loading" *ngIf="isLoading">
+      <div class="spinner"></div>
+    </div>
+    
+    <div class="search-results" *ngIf="!isLoading && searchResults.length > 0">
+      <div class="results-grid">
+        <app-movie-card *ngFor="let movie of searchResults" [movie]="movie"></app-movie-card>
+      </div>
+    </div>
+    
+    <div class="no-results" *ngIf="!isLoading && searchQuery && searchResults.length === 0">
+      <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <h2>No results found for "{{ searchQuery }}"</h2>
+      <p>Try searching for something else</p>
+    </div>
+  </div>
+</div>
